@@ -28,7 +28,7 @@ RFM analysis helps you **identify high-value customers**, segment them into dist
 The Python code provided performs the following steps to calculate and segment customers using **RFM analysis**:
 
 ### **Step 1: Load and Preprocess Data**
-We start by loading transaction data (for example from a [CSV file](kaggle.com/datasets/marian447/retail-store-sales-transactions))
+We start by loading transaction data (for example from a [CSV file](https://www.kaggle.com/datasets/marian447/retail-store-sales-transactions))
 into a **pandas DataFrame**. The dataset includes **Transaction Date**, **Customer ID**, **Transaction ID**, **Quantity**, and **Total Amount of Sales**.
 
 ```python
