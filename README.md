@@ -21,7 +21,7 @@ df = pd.read_csv("your_data.csv")
 df['Date'] = pd.to_datetime(df['Date'], format='mixed', dayfirst=True, errors='coerce')
 ```
 
-### **2: Load & Preprocess Data**
+### **2: Compute RFM Metrics**
 
 ```python
 rfm = df.groupby('Customer ID').agg({
