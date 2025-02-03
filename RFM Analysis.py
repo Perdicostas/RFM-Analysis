@@ -31,13 +31,13 @@ rfm['RFM_Score'] = rfm['R_Score'].astype(str) + rfm['F_Score'].astype(str) + rfm
 #Define customer segments based on RFM Score
 def segment_customer(row):
     if row['Frequency'] == 1:
-        if row['Recency'] <= 30:  #If clien bought recently, is "New Customer"
+        if row['Recency'] <= 30:  #If client bought recently, is "New Customer"
             return 'New Customer'
         else:  #If client has only purchased once in the past, is "One-Time Buyer"
             return 'One-Time Buyer'
     
     #Segmentation for other cases
-    if row['RFM_Score'] in ['555', '554', '545', '554']:
+    if row['R_Score'] == 5 and row['F_Score'] >= 4 and row['M_Score'] >= 4:
         return 'Best Customers'
     elif row['RFM_Score'].startswith('5'):
         return 'Loyal Customers'
