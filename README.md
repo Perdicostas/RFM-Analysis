@@ -45,18 +45,22 @@ rfm['RFM_Score'] = rfm['R_Score'].astype(str) + rfm['F_Score'].astype(str) + rfm
 ```python
 def segment_customer(row):
     if row['Frequency'] == 1:
-        return 'New Customer' if row['Recency'] <= 30 else 'One-Time Buyer'
-    if row['RFM_Score'] in ['555', '554']:
+        if row['Recency'] <= 30:  
+            return 'New Customer'
+        else:  
+            return 'One-Time Buyer'  
+    if row['R_Score'] == 5 and row['F_Score'] >= 4 and row['M_Score'] >= 4:
         return 'Best Customers'
-    if row['RFM_Score'].startswith('5'):
+    elif row['R_Score'] == 5:
         return 'Loyal Customers'
-    if row['RFM_Score'].startswith('1'):
-        return 'At-Risk Customers'
-    if row['RFM_Score'].startswith('2'):
+    elif row['R_Score'] == 1:
+        return 'At Risk Customers'
+    elif row['R_Score'] == 2:
         return 'Churned Customers'
-    if row['RFM_Score'].startswith('4'):
+    elif row['R_Score'] == 4:
         return 'Potential Loyalists'
-    return 'Average Customers'
+    else:
+        return 'Average Customers'
 
 rfm['Segment'] = rfm.apply(segment_customer, axis=1)
 ```
